@@ -1,7 +1,7 @@
 firewalld:
     pkg.installed
 
-public-firewall:
+public:
   firewalld.present:
     - name: public
     - block_icmp:
@@ -15,6 +15,5 @@ public-firewall:
 restart-public-firewalld:
   service.running:
     - name: firewalld
-    - user: root
     - onchanges:
-        - public-firewall
+        - public
