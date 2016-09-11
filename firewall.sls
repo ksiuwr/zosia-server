@@ -1,6 +1,7 @@
 firewalld:
     pkg.installed
 
+    # NOTE: Bugs here. Be sure to manually check if it applied correctly
 public:
   firewalld.present:
     - name: public
@@ -9,11 +10,6 @@ public:
       - echo-request
     - ports:
       - 22/tcp
+      - 80/tcp
     - require:
         - pkg: firewalld
-
-restart-public-firewalld:
-  service.running:
-    - name: firewalld
-    - onchanges:
-        - public
