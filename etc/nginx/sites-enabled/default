@@ -1,0 +1,15 @@
+server {
+       	listen 80 default_server;
+       	listen [::]:80 default_server;
+
+
+       	root /srv/zosia-server/html;
+
+       	index.html;
+
+       	server_name _;
+
+       	location / {
+       		try_files $uri =404;
+       	}
+}
