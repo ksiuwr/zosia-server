@@ -1,4 +1,7 @@
-public:
+firewalld:
+    pkg.installed
+
+public-firewall:
   firewalld.present:
     - name: public
     - block_icmp:
@@ -13,5 +16,6 @@ public:
 restart-public-firewalld:
   service.running:
     - name: firewalld
+    - user: root
     - listen:
       - file: /etc/firewalld/zones/public.xml
