@@ -5,4 +5,4 @@ https://github.com/scoiatael/zosia-server.git:
 salt-call --local state.apply > /var/log/salt.log:
   cron.present:
     - user: root
-      - minute: 5
+    - minute: 5
