@@ -17,5 +17,5 @@ restart-public-firewalld:
   service.running:
     - name: firewalld
     - user: root
-    - watch:
-      - file: /etc/firewalld/zones/public.xml
+    - onchanges:
+        - public-firewall
