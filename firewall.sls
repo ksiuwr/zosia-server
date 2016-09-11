@@ -9,3 +9,4 @@ public:
       - echo-request
     - ports:
       - 22/tcp
+      - 80/tcp
