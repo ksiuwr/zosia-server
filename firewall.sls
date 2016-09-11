@@ -9,7 +9,6 @@ public-firewall:
       - echo-request
     - ports:
       - 22/tcp
-      - 80/tcp
     - require:
         - pkg: firewalld
 
