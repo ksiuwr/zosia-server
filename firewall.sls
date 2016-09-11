@@ -1,3 +1,6 @@
+firewalld:
+    pkg.installed
+
 public:
   firewalld.present:
     - name: public
