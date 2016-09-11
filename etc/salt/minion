@@ -1,0 +1,7 @@
+# -*- mode: conf; -*-
+file_client: local
+
+file_roots:
+  base:
+    - /srv/salt
+    - /srv/zosia-server
