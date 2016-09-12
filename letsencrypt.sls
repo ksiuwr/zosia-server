@@ -13,4 +13,4 @@ letsencrypt renew --agree-tos | logger:
   cron.present:
     - identifier: LETSENCRYPT_RENEW
     - user: root
-    - special: @daily
+    - hour: '*/12'
