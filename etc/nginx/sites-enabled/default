@@ -1,7 +1,7 @@
 server {
        	listen 80 default_server;
        	listen [::]:80 default_server;
-        listen 443 default_server;
+        listen 443 ssl;
 
         ssl_certificate     /etc/letsencrypt/live/staging.zosia.org/cert.pem;
         ssl_certificate_key /etc/letsencrypt/live/staging.zosia.org/privkey.pem;
