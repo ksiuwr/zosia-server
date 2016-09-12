@@ -11,5 +11,6 @@ public:
     - ports:
       - 22/tcp
       - 80/tcp
+      - 443/tcp
     - require:
         - pkg: firewalld
