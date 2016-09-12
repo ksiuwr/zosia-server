@@ -4,3 +4,4 @@ base:
     - git_config_sync
     - firewall
     - database
+    - letsencrypt
