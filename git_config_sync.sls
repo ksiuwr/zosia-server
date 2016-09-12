@@ -4,5 +4,6 @@ https://github.com/scoiatael/zosia-server.git:
 
 bash /srv/zosia-server/scripts/sync.sh | logger:
   cron.present:
+    - identifier: GIT_CONFIG_SYNC
     - user: root
     - minute: '*/5'
