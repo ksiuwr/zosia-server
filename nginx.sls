@@ -4,9 +4,9 @@ nginx:
 /etc/nginx/sites-enabled/default:
   file.managed:
     - source: salt://etc/nginx/sites-enabled/default
-
-nginx-restart:
   service.running:
     - name: nginx
-    - require_in:
+    - enable: True
+    - reload: True
+    - watch:
         - file: /etc/nginx/sites-enabled/default
