@@ -17,6 +17,7 @@ app-git:
   virtualenv.manage:
     - requirements: /var/www/app/requirements.txt
     - clear: false
+    - python: python3
     - require:
       - pkg: app-pkgs
       - git: app-git
