@@ -5,3 +5,4 @@ base:
     - firewall
     - database
     - letsencrypt
+    - webapp
