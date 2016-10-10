@@ -14,9 +14,9 @@ app-git:
       - pkg: app-pkgs
 
 /var/www/env:
-  virtualenv.manage:
+  virtualenv_mod.manage:
     - requirements: /var/www/app/requirements.txt
-    - no_site_packages: true
+    - system_site_packages: true
     - clear: false
     - require:
       - pkg: app-pkgs
