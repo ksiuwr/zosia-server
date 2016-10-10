@@ -33,6 +33,7 @@ systemd_gunicorn_service:
     - watch:
       - file: systemd_gunicorn_service
   service.running:
+    - name: gunicorn.service
     - enable: True
     - reload: True
     - require:
