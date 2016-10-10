@@ -21,3 +21,19 @@ app-git:
     - require:
       - pkg: app-pkgs
       - git: app-git
+
+systemd_gunicorn_service:
+  file.managed:
+    - name: /etc/systemd/system/gunicorn.service
+    - source: salt://etc/systemd/gunicorn.service
+    - template: jinja
+    - mode: 755
+  module.wait:
+    - name: service.systemctl_reload
+    - watch:
+      - file: systemd_gunicorn_service
+  service.running:
+    - enable: True
+    - reload: True
+    - require:
+      - file: systemd_gunicorn_service
