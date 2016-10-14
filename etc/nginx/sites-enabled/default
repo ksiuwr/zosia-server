@@ -30,8 +30,8 @@ server {
     root /var/www/well-known;
   }
 
-  alias /static {
-      root /var/www/static;
+  location /static {
+      alias /var/www/static;
   }
 
   location / {
