@@ -17,6 +17,8 @@ bash /srv/zosia-server/scripts/sync.sh | logger:
     - source: salt://etc/pillar/top.sls
 
 /srv/pillar/secrets.sls:
-  file.copy:
+  file.managed:
     - source: salt://pillar.example.sls
+    - unless:
+        - ls /srv/pillar/secrets.sls
 
