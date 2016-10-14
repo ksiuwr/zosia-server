@@ -3,7 +3,7 @@ app-pkgs:
     - names:
       - git
       - python-virtualenv
-      - python-dev
+      - python3-dev
 
 app-git:
   git.latest:
