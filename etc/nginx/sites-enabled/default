@@ -31,7 +31,7 @@ server {
   }
 
   location /static {
-      root /var/www/static
+      root /var/www/static;
   }
 
   location / {
