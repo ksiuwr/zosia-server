@@ -22,6 +22,11 @@ app-git:
       - pkg: app-pkgs
       - git: app-git
 
+/var/www/env/bin/python ./manage.py collectstatic --no-input:
+  cmd.run:
+    - onchanges:
+        - git: app-git
+
 systemd_gunicorn_service:
   file.managed:
     - name: /etc/systemd/system/gunicorn.service

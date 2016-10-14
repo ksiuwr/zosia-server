@@ -1,3 +1,4 @@
+# -*- mode: nginx -*-
 upstream app_server {
   # fail_timeout=0 means we always retry an upstream even if it failed
   # to return a good HTTP response
@@ -27,6 +28,10 @@ server {
 
   location /.well-known {
     root /var/www/well-known;
+  }
+
+  location /static {
+      root /var/www/static
   }
 
   location / {
