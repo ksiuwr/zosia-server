@@ -8,3 +8,10 @@ To set up certificate, run:
 ```
 sudo letsencrypt certonly --webroot -w /var/www/well-known -d staging.zosia.org:
 ```
+
+## Not covered:
+* Datadog agent setup
+
+## Secrets
+Edit /srv/pillar/secrets.sls to update secrets managed by Salt.
+Run `sudo salt-call --local state.apply` to sync afterwards
