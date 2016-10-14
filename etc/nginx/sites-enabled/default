@@ -30,7 +30,7 @@ server {
     root /var/www/well-known;
   }
 
-  location ~ ^/static {
+  location /static {
       root /var/www/static;
   }
 
