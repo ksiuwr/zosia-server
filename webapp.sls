@@ -22,7 +22,7 @@ app-git:
       - pkg: app-pkgs
       - git: app-git
 
-/var/www/env/bin/python ./manage.py collectstatic --no-input:
+/var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input:
   cmd.run:
     - onchanges:
         - git: app-git
