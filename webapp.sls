@@ -22,10 +22,16 @@ app-git:
       - pkg: app-pkgs
       - git: app-git
 
-/var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input:
+generate-static:
   cmd.run:
+    - name: /var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input
     - onchanges:
         - git: app-git
+
+chown -R www-data:www-data /var/www/static:
+  cmd.run:
+    - onchanges:
+        - cmd: generate-static
 
 systemd_gunicorn_service:
   file.managed:
