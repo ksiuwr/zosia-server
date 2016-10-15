@@ -14,3 +14,8 @@ nginx:
 /var/www/html/index.html:
   file.managed:
     - source: salt://html/index.html
+
+remove-default-index:
+  file.absent:
+    - name: /var/www/html/index.nginx-debian.html:
+ 
