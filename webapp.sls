@@ -50,3 +50,7 @@ systemd_gunicorn_service:
     - reload: True
     - require:
       - file: systemd_gunicorn_service
+
+zosia-user:
+  user.present:
+    - name: zosia
