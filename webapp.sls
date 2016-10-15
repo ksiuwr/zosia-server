@@ -2,6 +2,7 @@ app-pkgs:
   pkg.installed:
     - names:
       - git
+      - libpq-dev
       - python-virtualenv
       - python3-dev
 

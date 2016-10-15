@@ -1,11 +1,13 @@
-postgresql:
-  pkg.installed
+database-pkgs:
+  pkg.installed:
+    - names:
+      - postgresql
 
 pg_zosia_user:
   postgres_user.present:
     - name: zosia
     - require:
-        - pkg: postgresql
+        - pkg: database-pkgs
 
 pg_zosia_database:
   postgres_database.present:
