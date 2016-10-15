@@ -44,6 +44,8 @@ systemd_gunicorn_service:
     - name: service.systemctl_reload
     - watch:
       - file: systemd_gunicorn_service
+  cmd.run:
+    - name: systemctl daemon-reload
   service.running:
     - name: gunicorn.service
     - enable: True

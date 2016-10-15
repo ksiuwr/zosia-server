@@ -5,7 +5,7 @@ After=network.target
 [Service]
 PIDFile=/run/gunicorn/pid
 WorkingDirectory=/var/www/app
-ExecStart=/var/www/env/bin/gunicorn --statsd-host=localhost:8125 zosia16.wsgi
+ExecStart=/var/www/env/bin/gunicorn --statsd-host=localhost:8125 --user=zosia zosia16.wsgi
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 PrivateTmp=true
