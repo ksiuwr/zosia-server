@@ -49,12 +49,15 @@ systemd_gunicorn_service:
       - file: systemd_gunicorn_service
   cmd.run:
     - name: systemctl daemon-reload
+    - onchanges:
+        - file: systemd_gunicorn_service
   service.running:
     - name: gunicorn.service
     - enable: True
     - reload: True
     - require:
       - file: systemd_gunicorn_service
+      - cmd: systemd_gunicorn_service
 
 zosia-user:
   user.present:
