@@ -10,9 +10,12 @@ app-git:
   git.latest:
     - name:  https://github.com/ksiuwr/zosia16-site.git
     - target: /var/www/app/
-    - force: true
     - require:
       - pkg: app-pkgs
+  cmd.run:
+    - name: chown -R zosia:zosia /var/www/app
+    - require:
+        - user: zosia-user
 
 /var/www/env:
   virtualenv.manage:
