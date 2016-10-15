@@ -57,6 +57,7 @@ systemd_gunicorn_service:
     - reload: True
     - require:
       - file: systemd_gunicorn_service
+      - git: app-git
       - cmd: systemd_gunicorn_service
 
 zosia-user:
