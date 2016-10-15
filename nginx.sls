@@ -10,3 +10,7 @@ nginx:
     - reload: True
     - watch:
         - file: /etc/nginx/sites-enabled/default
+
+/var/www/html/index.html:
+  file.managed:
+    - source: salt://html/index.html

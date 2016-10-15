@@ -20,7 +20,7 @@ server {
   ssl_certificate     /etc/letsencrypt/live/staging.zosia.org/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/staging.zosia.org/privkey.pem;
 
-  root /srv/zosia-server/html;
+  root /var/www/html;
 
   index index.html;
 
