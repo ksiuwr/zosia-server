@@ -17,5 +17,5 @@ nginx:
 
 remove-default-index:
   file.absent:
-    - name: /var/www/html/index.nginx-debian.html:
+    - name: /var/www/html/index.nginx-debian.html
  
