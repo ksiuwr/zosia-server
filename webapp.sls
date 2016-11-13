@@ -1,6 +1,7 @@
 app-pkgs:
   pkg.installed:
     - names:
+      - npm
       - git
       - libpq-dev
       - python-virtualenv
@@ -26,7 +27,24 @@ app-git:
       - pkg: app-pkgs
       - git: app-git
 
+npm-deps:
+  cmd.run:
+    - cwd: /var/www/app/
+    - name: npm i
+    - onchanges:
+        - git: app-git
+    - require:
+      - pkg: app-pkgs
+      - git: app-git
+
 generate-static:
+  cmd.run:
+    - name: make deps
+    - cwd: /var/www/app/
+    - onchanges:
+        - git: app-git
+    - require:
+      - cmd: npm-deps
   cmd.run:
     - name: /var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input
     - onchanges:
