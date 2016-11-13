@@ -49,6 +49,15 @@ bower-deps:
       - cmd: npm-deps
       - user: zosia-user
 
+migrate:
+  cmd.run:
+    - name: /var/www/env/bin/python /var/www/app/manage.py migrate
+    - runas: zosia
+    - cwd: /var/www/app/
+    - require:
+      - git: app-git
+
+
 generate-static:
   cmd.run:
     - name: /var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input
