@@ -18,6 +18,11 @@ app-git:
     - require:
         - user: zosia-user
 
+nodejs-ubuntu-fix:
+  cmd.run:
+    - name: ln -s /usr/bin/nodejs /usr/bin/node
+    - creates: /usr/bin/node
+
 /var/www/env:
   virtualenv.manage:
     - requirements: /var/www/app/requirements.txt
@@ -38,9 +43,11 @@ npm-deps:
 bower-deps:
   cmd.run:
     - name: make deps
+    - runas: zosia
     - cwd: /var/www/app/
     - require:
       - cmd: npm-deps
+      - user: zosia-user
 
 generate-static:
   cmd.run:
