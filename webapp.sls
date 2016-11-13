@@ -37,7 +37,7 @@ npm-deps:
       - pkg: app-pkgs
       - git: app-git
 
-generate-static:
+bower-deps:
   cmd.run:
     - name: make deps
     - cwd: /var/www/app/
@@ -45,6 +45,8 @@ generate-static:
         - git: app-git
     - require:
       - cmd: npm-deps
+
+generate-static:
   cmd.run:
     - name: /var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input
     - onchanges:
