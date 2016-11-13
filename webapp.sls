@@ -31,8 +31,6 @@ npm-deps:
   cmd.run:
     - cwd: /var/www/app/
     - name: npm i
-    - onchanges:
-        - git: app-git
     - require:
       - pkg: app-pkgs
       - git: app-git
@@ -41,16 +39,12 @@ bower-deps:
   cmd.run:
     - name: make deps
     - cwd: /var/www/app/
-    - onchanges:
-        - git: app-git
     - require:
       - cmd: npm-deps
 
 generate-static:
   cmd.run:
     - name: /var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input
-    - onchanges:
-        - git: app-git
 
 chown -R www-data:www-data /var/www/static:
   cmd.run:
