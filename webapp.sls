@@ -11,6 +11,7 @@ app-git:
   git.latest:
     - name:  https://github.com/scoiatael/zosia16-site.git
     - target: /var/www/app/
+    - force_fetch: true
     - require:
       - pkg: app-pkgs
   cmd.run:
