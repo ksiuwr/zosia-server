@@ -91,6 +91,13 @@ systemd_gunicorn_service:
       - git: app-git
       - cmd: systemd_gunicorn_service
 
+gunicorn_env:
+  file.managed:
+    - name: /etc/gunicorn.env
+    - source: salt://etc/gunicorn.env
+    - template: jinja
+    - mode: 600
+
 zosia-user:
   user.present:
     - name: zosia

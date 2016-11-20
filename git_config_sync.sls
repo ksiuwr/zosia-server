@@ -21,4 +21,4 @@ bash /srv/zosia-server/scripts/sync.sh | logger:
     - source: salt://pillar.example.sls
     - unless:
         - ls /srv/pillar/secrets.sls
-
+    - mode: 600
