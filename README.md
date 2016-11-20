@@ -15,6 +15,12 @@ sudo letsencrypt certonly --webroot -w /var/www/well-known -d staging.zosia.org:
 ## Secrets
 (on server)
 * Edit `/srv/pillar/secrets.sls` to update secrets managed by Salt.
+* Map under `gunicorn_env` will be passed to Python server. Thus, `secrets.sls`:
+```
+gunicorn_env:
+  foo: bar
+```
+will result in `os.environ.get('FOO') == 'bar'` in Django.
 * Run `sudo salt-call --local state.apply` to sync afterwards
 
 ## Migrations
