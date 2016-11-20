@@ -8,4 +8,6 @@ sudo sh bootstrap_salt.sh
 
 sudo git clone https://github.com/ksiuwr/zosia-server.git /srv/zosia-server
 sudo cp /srv/zosia-server/etc/salt/minion /etc/salt/minion
+sudo touch /srv/pillar/secrets.sls
+sudo chmod 600 /srv/pillar/secrets.sls
 sudo salt-call --local state.apply
