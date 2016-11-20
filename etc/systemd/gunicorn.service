@@ -6,7 +6,7 @@ After=network.target
 PIDFile=/run/gunicorn/pid
 EnvironmentFile=/etc/gunicorn.env
 WorkingDirectory=/var/www/app
-ExecStart=/var/www/env/bin/gunicorn --pid /run/gunicorn.pid --statsd-host=localhost:8125 --user=zosia zosia16.wsgi --access-logfile - --capture-output=True
+ExecStart=/var/www/env/bin/gunicorn --pid /run/gunicorn.pid --statsd-host=localhost:8125 --user=zosia zosia16.wsgi --access-logfile - --capture-output
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 PrivateTmp=true
