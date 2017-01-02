@@ -1,8 +1,5 @@
 base:
   '*':
+    - salt_minion
     - nginx
-    - git_config_sync
-    - firewall
-    - database
-    - letsencrypt
-    - webapp
+    - site

@@ -1,0 +1,5 @@
+# -*- mode: systemd -*-
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/salt-call --local state.apply salt_minion
+ExecStart=/usr/bin/salt-call --local state.apply

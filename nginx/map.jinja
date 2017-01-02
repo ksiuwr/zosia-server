@@ -1,0 +1,13 @@
+# -*- mode: jinja2 -*-
+
+{## Start with  defaults from defaults.yml ##}
+{% import_yaml 'nginx/defaults.yml' as default_settings %}
+
+{## Merge in nginx pillar ##}
+{%
+  set nginx = salt['pillar.get'](
+    'nginx',
+    default=default_settings.nginx,
+    merge=True
+  )
+%}
