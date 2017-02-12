@@ -1,0 +1,5 @@
+salt_minion:
+  repository_url: https://github.com/ksiuwr/zosia-server.git
+  repository_branch: master
+  sync: true
+  periodical_sync: true

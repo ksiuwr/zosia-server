@@ -1,0 +1,13 @@
+# -*- mode: jinja2 -*-
+
+{## Start with defaults from defaults.yml ##}
+{% import_yaml 'salt_minion/defaults.yml' as default_settings %}
+
+{## Merge in salt_minion pillar ##}
+{%
+  set salt_minion = salt['pillar.get'](
+    'salt_minion',
+    default=default_settings.salt_minion,
+    merge=True
+  )
+%}

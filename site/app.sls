@@ -62,11 +62,21 @@ migrate:
 generate-static:
   cmd.run:
     - name: /var/www/env/bin/python /var/www/app/manage.py collectstatic --no-input
+    - require:
+        - cmd: bower-deps
+
 
 chown -R www-data:www-data /var/www/static:
   cmd.run:
     - onchanges:
         - cmd: generate-static
+
+gunicorn_env:
+  file.managed:
+    - name: /etc/gunicorn.env
+    - source: salt://etc/gunicorn.env
+    - template: jinja
+    - mode: 600
 
 systemd_gunicorn_service:
   file.managed:
@@ -87,16 +97,10 @@ systemd_gunicorn_service:
     - enable: True
     - reload: True
     - require:
+      - file: gunicorn_env
       - file: systemd_gunicorn_service
       - git: app-git
       - cmd: systemd_gunicorn_service
-
-gunicorn_env:
-  file.managed:
-    - name: /etc/gunicorn.env
-    - source: salt://etc/gunicorn.env
-    - template: jinja
-    - mode: 600
 
 zosia-user:
   user.present:

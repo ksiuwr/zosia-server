@@ -1,4 +1,6 @@
 # -*- mode: nginx -*-
+{% from "nginx/map.jinja" import nginx with context %}
+
 upstream app_server {
     # fail_timeout=0 means we always retry an upstream even if it failed
     # to return a good HTTP response
@@ -17,6 +19,7 @@ server {
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
+{% if nginx.use_https %}
     server_name _;
 	  return 301 https://$host$request_uri;
 }
@@ -26,12 +29,12 @@ server {
 
     ssl_certificate     /etc/letsencrypt/live/staging.zosia.org/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/staging.zosia.org/privkey.pem;
+{% endif %}
+    server_name _;
 
     root /var/www/html;
 
     index index.html;
-
-    server_name _;
 
     location /.well-known {
         root /var/www/well-known;
@@ -52,8 +55,10 @@ server {
 
     location @proxy_to_app {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        {% if nginx.use_https %}
         # enable this if and only if you use HTTPS
         proxy_set_header X-Forwarded-Proto https;
+        {% endif %}
         proxy_set_header Host $http_host;
         # we don't want nginx trying to do something clever with
         # redirects, we set the Host: header above already.
