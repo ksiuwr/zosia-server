@@ -95,7 +95,8 @@ systemd_gunicorn_service:
   service.running:
     - name: gunicorn.service
     - enable: True
-    - reload: True
+    - onchanges:
+      - git: app-git
     - require:
       - file: gunicorn_env
       - file: systemd_gunicorn_service
