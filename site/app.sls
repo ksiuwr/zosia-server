@@ -9,7 +9,7 @@ app-pkgs:
 
 app-git:
   git.latest:
-    - name:  https://github.com/scoiatael/zosia16-site.git
+    - name:  https://github.com/ksiuwr/zosia16-site.git
     - target: /var/www/app/
     - force_fetch: true
     - require:
