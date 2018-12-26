@@ -3,9 +3,14 @@ app-pkgs:
     - names:
       - npm
       - git
-      - libpq-dev
+    #   - libpq-dev
+      - libpqxx-devel
       - python-virtualenv
-      - python3-dev
+    #   - python3-dev
+      - python36-devel
+      - zlib-devel
+      - libjpeg-turbo
+      - gcc
 
 app-git:
   git.latest:
@@ -19,6 +24,10 @@ app-git:
     - require:
         - user: zosia-user
 
+/etc/profile.d/python3.sh:
+  file.managed:
+    - source: salt://etc/profile.d/python3.sh
+
 nodejs-ubuntu-fix:
   cmd.run:
     - name: ln -s /usr/bin/nodejs /usr/bin/node
@@ -28,7 +37,7 @@ nodejs-ubuntu-fix:
   virtualenv.manage:
     - requirements: /var/www/app/requirements.txt
     - clear: false
-    - python: python3
+    - python: python36
     - require:
       - pkg: app-pkgs
       - git: app-git
